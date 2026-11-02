@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const { DatabaseSync } = require("node:sqlite");
 
-const PUERTO = 5500;
+const PUERTO = Number(process.env.PORT) || 5500;
 const ARCHIVO_BASE = path.join(__dirname, "notas.db");
 const ARCHIVO_JSON = path.join(__dirname, "notas.json");
 
