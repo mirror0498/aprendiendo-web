@@ -1,0 +1,8 @@
+{
+  "name": "aprendiendo-web",
+  "private": true,
+  "scripts": {
+    "build": "npm install --prefix cliente && npm run build --prefix cliente",
+    "start": "node servidor.js"
+  }
+}

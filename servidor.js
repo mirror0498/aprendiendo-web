@@ -44,11 +44,16 @@ base.exec(`
 
 pasarNotasDelJson();
 
+const CARPETA_PAGINA = path.join(__dirname, "cliente", "dist");
+
 const TIPOS = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8",
+  ".svg": "image/svg+xml",
+  ".png": "image/png",
+  ".ico": "image/x-icon",
 };
 
 function leerNotas(usuarioId) {
@@ -110,10 +115,18 @@ async function leerJson(peticion, respuesta) {
   }
 }
 
+function carpetaPagina() {
+  if (fs.existsSync(path.join(CARPETA_PAGINA, "index.html"))) {
+    return CARPETA_PAGINA;
+  }
+
+  return __dirname;
+}
+
 function servirArchivo(respuesta, ruta) {
   const relativo = decodeURIComponent(ruta === "/" ? "index.html" : ruta).replace(/^\/+/, "");
-  const archivo = path.resolve(__dirname, relativo);
-  const raiz = path.resolve(__dirname);
+  const raiz = path.resolve(carpetaPagina());
+  const archivo = path.resolve(raiz, relativo);
 
   if (archivo !== raiz && !archivo.startsWith(raiz + path.sep)) {
     respuesta.writeHead(403);

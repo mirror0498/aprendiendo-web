@@ -39,7 +39,7 @@ export default function Acceso({ alEntrar }) {
     <section className="panel" id="acceso">
       <h2>Entrar</h2>
       <p className="ayuda">
-        Crea una cuenta o entra. La lista es solo de esa cuenta. Esta página se abre en el puerto 5173. El servidor sigue en el puerto 5500.
+        Crea una cuenta o entra. La lista es solo de esa cuenta. El servidor sigue en el puerto 5500.
       </p>
       <form onSubmit={(evento) => enviar(evento, '/api/registro')}>
         <label htmlFor="registro-nombre">Nombre nuevo</label>
