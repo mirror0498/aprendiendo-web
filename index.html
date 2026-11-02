@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi primera página</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="cabecera">
+    <p class="etiqueta">Lección 4</p>
+    <h1>Mi primera página</h1>
+    <p class="intro">
+      Hay dos tablas más en <strong>notas.db</strong>: <strong>usuarios</strong>
+      y <strong>sesiones</strong>. La clave no se guarda escrita. Se guarda
+      <strong>clave_hash</strong>, un cálculo hecho con la clave. Cada nota
+      lleva la columna <strong>usuario_id</strong>, el número de quien la escribió.
+    </p>
+  </header>
+
+  <main>
+    <section class="piezas" aria-label="Las partes de la página">
+      <article>
+        <h2>HTML</h2>
+        <p>Etiquetas que dicen qué es cada cosa: un título, un texto, un formulario, una lista.</p>
+      </article>
+      <article>
+        <h2>CSS</h2>
+        <p>Reglas de presentación: color, tamaño, espacios y cómo se acomoda en el celular.</p>
+      </article>
+      <article>
+        <h2>JavaScript</h2>
+        <p>Pide las notas al servidor con fetch y vuelve a dibujar la lista.</p>
+      </article>
+      <article>
+        <h2>Servidor</h2>
+        <p>Comprueba la clave, abre una sesión y guarda la nota con el número de ese usuario.</p>
+      </article>
+    </section>
+
+    <section class="panel" id="acceso">
+      <h2>Entrar</h2>
+      <p class="ayuda">
+        Crea una cuenta o entra con el nombre y la clave. La lista de después
+        es solo de esa cuenta. Las notas de antes no tienen usuario, así que
+        esta página ya no las muestra.
+      </p>
+
+      <form id="formulario-registro">
+        <label for="registro-nombre">Nombre nuevo</label>
+        <div class="fila">
+          <input id="registro-nombre" name="nombre" type="text" maxlength="40" autocomplete="off">
+          <input id="registro-clave" name="clave" type="password" maxlength="80" placeholder="Clave, mínimo 4" autocomplete="new-password" aria-label="Clave nueva">
+          <button type="submit">Crear cuenta</button>
+        </div>
+      </form>
+
+      <form id="formulario-entrar">
+        <label for="entrar-nombre">Ya tengo cuenta</label>
+        <div class="fila">
+          <input id="entrar-nombre" name="nombre" type="text" maxlength="40" autocomplete="username">
+          <input id="entrar-clave" name="clave" type="password" maxlength="80" placeholder="Clave" autocomplete="current-password" aria-label="Clave">
+          <button type="submit">Entrar</button>
+        </div>
+      </form>
+      <p id="mensaje-acceso" class="mensaje" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel oculto" id="panel-notas">
+      <div class="encabezado-panel">
+        <h2>Notas de <span id="nombre-usuario"></span></h2>
+        <button type="button" id="salir" class="borrar">Salir</button>
+      </div>
+      <p class="ayuda">
+        Agrega una nota, recarga la página y pulsa Salir. Al entrar otra vez,
+        la nota sigue. Otra cuenta no la ve.
+      </p>
+
+      <form id="formulario">
+        <label for="nota">Qué quieres anotar</label>
+        <div class="fila">
+          <input
+            id="nota"
+            name="nota"
+            type="text"
+            maxlength="80"
+            placeholder="Por ejemplo: practicar Flexbox"
+            autocomplete="off"
+          >
+          <button type="submit">Agregar</button>
+        </div>
+        <p id="mensaje" class="mensaje" role="status" aria-live="polite"></p>
+      </form>
+
+      <p id="vacio" class="vacio">Todavía no hay notas. Escribe la primera arriba.</p>
+      <ul id="lista" class="lista"></ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
